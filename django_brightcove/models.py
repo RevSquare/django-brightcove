@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -25,7 +27,8 @@ class BrightcoveItems(models.Model):
 
     @property
     def length_seconds(self):
-        return float(self.length/1000)
+        length = datetime.timedelta(milliseconds=self.length)
+        return ':'.join(str(length).split('.')[0:1])
 
     @property
     def long_description_normalized(self):

@@ -6,6 +6,7 @@ from .models import BrightcoveItems
 
 
 class BrightcoveApi():
+    """Class managing communication with the Brightcove API though the brightcove app."""
     token = ''
     connector = None
 
@@ -21,10 +22,13 @@ class BrightcoveApi():
         return self.connector.find_all_videos()
 
     def synchronize_list(self):
-        BrightcoveItems.objects.all().delete()
+        """Synchronizes the list of videos form a brightcove account with the BrightcoveItem model."""
         items = self._get_list()
+        existing_ids = []
         for item in items.items:
             self._save_item(item)
+            existing_ids.append(item.id)
+        BrightcoveItems.objects.exclude(brightcove_id__in=existing_ids).delete()
 
     def _save_item(self, item):
         brightcove_item, created = BrightcoveItems.objects.get_or_create(brightcove_id=item.id)

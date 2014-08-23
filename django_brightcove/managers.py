@@ -20,6 +20,7 @@ class BrightcoveManager(models.ForeignKey):
         kwargs['verbose_name'] = kwargs.get('verbose_name', _("Brightcove"))
         kwargs['null'] = kwargs.get('null', True)
         kwargs['blank'] = kwargs.get('blank', True)
+        kwargs['on_delete'] = kwargs.get('on_delete', models.SET_NULL)
         to_field = 'brightcove_id'
         rel_class = models.ManyToOneRel
         db_constraint = True
