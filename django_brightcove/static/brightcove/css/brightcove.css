@@ -12,4 +12,6 @@
 }
 .brightcove_widget table .label {
     font-weight: bold;
+    min-width: 120px;
+    text-align: right;
 }
