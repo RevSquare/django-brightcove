@@ -8,6 +8,7 @@
 .brightcove_widget table {
     background-color: #dbdbdb;
     margin-top: 10px;
+    width: 460px;
 }
 .brightcove_widget table .label {
     font-weight: bold;
