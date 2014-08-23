@@ -22,7 +22,7 @@ class BrightcoveSelect(Select):
             'all': ('brightcove/css/brightcove.css',
                     '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',)
         }
-        js = ('brightcove/js/brightcove.js',)
+        js = ('brightcove/js/brightcove.js', '//admin.brightcove.com/js/BrightcoveExperiences.js',)
 
     def render_select(self, name, value, attrs=None, choices=()):
         return super(BrightcoveSelect, self).render(name, value, attrs=None, choices=())
