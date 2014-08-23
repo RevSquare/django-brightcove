@@ -18,14 +18,18 @@
                 <td class="label">{% trans 'Video id' %}</td>
                 <td>{{ item.brightcove_id }}</td>
             </tr>
+            {% if item.short_description %}
             <tr>
                 <td class="label">{% trans 'Short description' %}</td>
-                <td>{{ item.short_description|default_if_none:"" }}</td>
+                <td>{{ item.short_description }}</td>
             </tr>
+            {% endif %}
+            {% if item.long_description %}
             <tr>
                 <td class="label">{% trans 'Long description' %}</td>
                 <td>{{ item.long_description|default_if_none:"" }}</td>
             </tr>
+            {% endif %}
             <tr>
                 <td class="label">{% trans 'length' %}</td>
                 <td>{{ item.length_seconds }}</td>
