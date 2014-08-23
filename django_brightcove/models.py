@@ -29,24 +29,3 @@ class BrightcoveItems(models.Model):
     def length_seconds(self):
         length = datetime.timedelta(milliseconds=self.length)
         return ':'.join(str(length).split('.')[0:1])
-
-    @property
-    def long_description_normalized(self):
-        return self._normalize(self.long_description)
-
-    @property
-    def short_description_normalized(self):
-        return self._normalize(self.short_description)
-
-    @property
-    def plays_total_normalized(self):
-        return self._normalize(self.plays_total)
-
-    @property
-    def _normalize(self, arg):
-        if arg is None:
-            if isinstance(arg, basestring):
-                return ''
-            else:
-                return 0
-        return arg
