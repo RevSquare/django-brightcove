@@ -103,7 +103,7 @@ Then within your template, simply call for the player tag and pass your video id
 
     {% load brightcove %}
     
-    <div class="player">{% brightcove video_id player='single' %}</div>
+    <div class="player">{% brightcove_player video_id player='single' %}</div>
 
 You can also pass height and width to the template tag, ie:
 
@@ -111,7 +111,7 @@ You can also pass height and width to the template tag, ie:
 
     {% load brightcove %}
     
-    <div class="player">{% brightcove video_id width=480 height=270 %}</div>
+    <div class="player">{% brightcove_player video_id width=480 height=270 %}</div>
     
 You will also need to add the Brightcove javascript library
 
