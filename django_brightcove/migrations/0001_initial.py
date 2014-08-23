@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'BrightcoveItems'
-        db.create_table(u'brightcove_brightcoveitems', (
+        db.create_table(u'django_brightcove_brightcoveitems', (
             ('brightcove_id', self.gf('django.db.models.fields.BigIntegerField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
             ('video_still_URL', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
@@ -22,16 +22,16 @@ class Migration(SchemaMigration):
             ('creation_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
             ('published_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
         ))
-        db.send_create_signal(u'brightcove', ['BrightcoveItems'])
+        db.send_create_signal(u'django_brightcove', ['BrightcoveItems'])
 
 
     def backwards(self, orm):
         # Deleting model 'BrightcoveItems'
-        db.delete_table(u'brightcove_brightcoveitems')
+        db.delete_table(u'django_brightcove_brightcoveitems')
 
 
     models = {
-        u'brightcove.brightcoveitems': {
+        u'django_brightcove.brightcoveitems': {
             'Meta': {'object_name': 'BrightcoveItems'},
             'brightcove_id': ('django.db.models.fields.BigIntegerField', [], {'primary_key': 'True'}),
             'creation_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
@@ -47,4 +47,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['brightcove']
+    complete_apps = ['django_brightcove']
