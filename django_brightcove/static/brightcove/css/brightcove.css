@@ -1,0 +1,14 @@
+.brightcove_widget_refresh {
+    margin-left: 10px;
+}
+.brightcove_widget_refresh span {
+    margin-right: 3px;
+}
+
+.brightcove_widget table {
+    background-color: #dbdbdb;
+    margin-top: 10px;
+}
+.brightcove_widget table .label {
+    font-weight: bold;
+}

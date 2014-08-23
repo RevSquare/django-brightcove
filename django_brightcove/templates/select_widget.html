@@ -1,0 +1,40 @@
+{% load i18n staticfiles %}
+
+<div class="brightcove_widget">
+    {{ select }} <a href="{% url 'brightcove-refresh-item-list' pk %}" class="brightcove_widget_refresh"><span class="fa fa-refresh"> </span>{% trans 'refresh the list' %}</a>
+    
+    {% if item %}
+        <table>
+            <tbody>
+                <tr>
+                    <td class="label">{% trans 'Thumbnail' %}</td>
+                    <td><img src="{{ item.thumbnail_URL }}"></td>
+                </tr>
+                <tr>
+                    <td class="label">{% trans 'Short description' %}</td>
+                    <td>{{ item.short_description_normalized }}</td>
+                </tr>
+                <tr>
+                    <td class="label">{% trans 'Long description' %}</td>
+                    <td>{{ item.long_description_normalized }}</td>
+                </tr>
+                <tr>
+                    <td class="label">{% trans 'length' %}</td>
+                    <td>{{ item.length_seconds }} {% trans 'seconds' %}</td>
+                </tr>
+                <tr>
+                    <td class="label">{% trans 'Total times played' %}</td>
+                    <td>{{ item.plays_total_normalized }}</td>
+                </tr>
+                <tr>
+                    <td class="label">{% trans 'Creation date' %}</td>
+                    <td>{{ item.creation_date }}</td>
+                </tr>
+                <tr>
+                    <td class="label">{% trans 'Publication date' %}</td>
+                    <td>{{ item.published_date }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+</div>

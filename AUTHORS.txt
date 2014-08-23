@@ -1,0 +1,3 @@
+The primary author of django_brightcove is Guillaume Pousseo 
+
+email: guillaumepousseo@revsquare.com
