@@ -20,11 +20,11 @@
             </tr>
             <tr>
                 <td class="label">{% trans 'Short description' %}</td>
-                <td>{{ item.short_description_normalized }}</td>
+                <td>{{ item.short_description|default_if_none:"" }}</td>
             </tr>
             <tr>
                 <td class="label">{% trans 'Long description' %}</td>
-                <td>{{ item.long_description_normalized }}</td>
+                <td>{{ item.long_description|default_if_none:"" }}</td>
             </tr>
             <tr>
                 <td class="label">{% trans 'length' %}</td>
@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <td class="label">{% trans 'Total times played' %}</td>
-                <td>{{ item.plays_total_normalized }}</td>
+                <td>{{ item.plays_total|default_if_none:"0" }}</td>
             </tr>
             <tr>
                 <td class="label">{% trans 'Creation date' %}</td>
