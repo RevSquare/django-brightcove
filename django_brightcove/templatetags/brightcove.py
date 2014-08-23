@@ -1,5 +1,5 @@
 from django import template
-from django.cong import settings
+from django.conf import settings
 
 
 register = template.Library()
@@ -7,7 +7,7 @@ register = template.Library()
 
 @register.inclusion_tag('tags/brightcove_player.html',
                         takes_context=True)
-def brightcove(context, player_id, *args, **kwargs):
+def brightcove_player(context, player_id, *args, **kwargs):
     """
     This tags generate the brightcove object code. It required the BRIGHTCOVE_PLAYER constant to be properly setup in
     the django settings.
@@ -17,11 +17,14 @@ def brightcove(context, player_id, *args, **kwargs):
     player = kwargs.get('player', settings.BRIGHTCOVE_PLAYER.keys()[0])
 
     try:
-        context['player'] = settings.BRIGHTCOVE_PLAYER[player]
+        player = settings.BRIGHTCOVE_PLAYER[player]
     except:
         raise KeyError('%s player type is missing from the BRIGHTCOVE_PLAYER constant') % player
 
-    if not context['player'].PLAYERID or not context['player'].PLAYERKEY:
+    try:
+        context['playerID'] = player['PLAYERID']
+        context['playerKey'] = player['PLAYERKEY']
+    except:
         raise KeyError('%s player type from the BRIGHTCOVE_PLAYER constant is not properly configured') % player
 
     context['width'] = kwargs.get('width', 480)
