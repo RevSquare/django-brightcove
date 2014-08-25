@@ -68,11 +68,11 @@ Simply add the Brightove field manager to it.
 .. code-block::  python
 
     from django.db import models
-    from django_brightcove.managers import BrightcoveManager
+    from django_brightcove.managers import BrightcoveField
 
 
     class MyModel(models.Model):
-        brightcove = BrightcoveManager()
+        brightcove = BrightcoveField()
 
     
     
