@@ -10,7 +10,7 @@ class BrightcoveSelect(Select):
     """
     def render(self, name, value, attrs=None, choices=()):
         item = None
-        if value is None:
+        if not value:
             value = 0
         else:
             item = BrightcoveItems.objects.get(pk=value)
