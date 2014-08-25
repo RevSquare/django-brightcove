@@ -29,4 +29,17 @@ class BrightcoveSelect(Select):
 
 
 class BrightcoveModelChoiceField(ModelChoiceField):
+    """
+    Overwrites the default ModelChoiceField widget to force the custom BrightcoveSelect widget and re-order the
+    queryset by name.
+    """
     widget = BrightcoveSelect
+
+    def __init__(self, queryset, empty_label="---------", cache_choices=False,
+                 required=True, widget=None, label=None, initial=None,
+                 help_text='', to_field_name=None, *args, **kwargs):
+        if 'ORDER BY' not in queryset.query.__str__():
+            queryset = queryset.order_by('name')
+        super(BrightcoveModelChoiceField, self).__init__(queryset, empty_label, cache_choices, required,
+                                                         widget, label, initial, help_text, to_field_name,
+                                                         *args, **kwargs)
