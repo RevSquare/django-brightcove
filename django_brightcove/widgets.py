@@ -29,7 +29,8 @@ class BrightcoveNumberInput(NumberInput):
             'all': ('brightcove/css/brightcove.css',
                     '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',)
         }
-        js = ('brightcove/js/brightcove.js', '//admin.brightcove.com/js/BrightcoveExperiences.js',)
+        js = ('//admin.brightcove.com/js/APIModules_all.js', 'brightcove/js/brightcove.js',
+              '//admin.brightcove.com/js/BrightcoveExperiences.js',)
 
     def render_input(self, name, value, attrs=None):
         return super(BrightcoveNumberInput, self).render(name, value, attrs)
