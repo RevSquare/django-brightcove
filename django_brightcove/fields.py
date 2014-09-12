@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from .models import BrightcoveItems
-from .widgets import BrightcoveModelChoiceField
+from .widgets import BrightcoveIntegerField
 
 
 class BrightcoveField(models.ForeignKey):
@@ -26,12 +26,17 @@ class BrightcoveField(models.ForeignKey):
         db_constraint = True
         super(BrightcoveField, self).__init__(BrightcoveItems, to_field, rel_class, db_constraint, **kwargs)
 
+    def save_form_data(self, instance, data):
+        video = BrightcoveItems.objects.get(pk=data)
+        super(BrightcoveField, self).save_form_data(instance, video)
+
     def formfield(self, **kwargs):
         """Overwites default formfield to trigger the custom Brightcove choicefield widget"""
         defaults = {
-            'form_class': BrightcoveModelChoiceField,
+            'form_class': BrightcoveIntegerField,
         }
-        return super(BrightcoveField, self).formfield(**defaults)
+        defaults.update(kwargs)
+        return super(models.ForeignKey, self).formfield(**defaults)
 
     def south_field_triple(self):
         """Provide a suitable description of this field for South."""

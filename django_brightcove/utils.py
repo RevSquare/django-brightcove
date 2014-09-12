@@ -18,6 +18,12 @@ class BrightcoveApi():
 
         self.connector = Brightcove(self.token)
 
+    def get_by_id(self, brightcove_id):
+        video = self.connector.find_video_by_id(brightcove_id)
+        if video:
+            return self._save_item(video)
+        return None
+
     def _get_list(self):
         return self.connector.find_all_videos()
 
@@ -43,3 +49,4 @@ class BrightcoveApi():
         brightcove_item.creation_date = item.creationDate
         brightcove_item.published_date = item.publishedDate
         brightcove_item.save()
+        return brightcove_item
