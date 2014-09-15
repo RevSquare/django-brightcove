@@ -27,7 +27,12 @@ class BrightcoveField(models.ForeignKey):
         super(BrightcoveField, self).__init__(BrightcoveItems, to_field, rel_class, db_constraint, **kwargs)
 
     def save_form_data(self, instance, data):
-        video = BrightcoveItems.objects.get(pk=data)
+        #when data is u'' and form allow te be null, we need to make sure
+        #it will not blow up the page
+        if data:
+            video = BrightcoveItems.objects.get(pk=data)
+        else:
+            video = None
         super(BrightcoveField, self).save_form_data(instance, video)
 
     def formfield(self, **kwargs):
