@@ -18,8 +18,8 @@ class BrightcoveField(models.ForeignKey):
     def __init__(self, null=True, blank=True, **kwargs):
         """Overwites default settings to setup the relationship with the BrightcoveItems model"""
         kwargs['verbose_name'] = kwargs.get('verbose_name', _("Brightcove"))
-        kwargs['null'] = kwargs.get('null', True)
-        kwargs['blank'] = kwargs.get('blank', True)
+        kwargs['null'] = null
+        kwargs['blank'] = blank
         kwargs['on_delete'] = kwargs.get('on_delete', models.SET_NULL)
         to_field = 'brightcove_id'
         rel_class = models.ManyToOneRel
