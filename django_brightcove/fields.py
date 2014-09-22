@@ -20,7 +20,12 @@ class BrightcoveField(models.ForeignKey):
         kwargs['verbose_name'] = kwargs.get('verbose_name', _("Brightcove"))
         kwargs['null'] = null
         kwargs['blank'] = blank
-        kwargs['on_delete'] = kwargs.get('on_delete', models.SET_NULL)
+        # If null is set to True we can't use SET_NULL as default
+        if null:
+            default_on_delete =  models.PROTECT
+        else:
+            default_on_delete = models.SET_NULL
+        kwargs['on_delete'] = kwargs.get('on_delete', default_on_delete)
         to_field = 'brightcove_id'
         rel_class = models.ManyToOneRel
         db_constraint = True
