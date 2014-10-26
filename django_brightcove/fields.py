@@ -26,10 +26,11 @@ class BrightcoveField(models.ForeignKey):
         else:
             default_on_delete = models.SET_NULL
         kwargs['on_delete'] = kwargs.get('on_delete', default_on_delete)
-        to_field = 'brightcove_id'
+        to_field = kwargs.pop('to_field', 'brightcove_id')
         rel_class = models.ManyToOneRel
         db_constraint = True
-        super(BrightcoveField, self).__init__(BrightcoveItems, to_field, rel_class, db_constraint, **kwargs)
+        to = kwargs.pop('to', BrightcoveItems)
+        super(BrightcoveField, self).__init__(to, to_field, rel_class, db_constraint, **kwargs)
 
     def save_form_data(self, instance, data):
         #when data is u'' and form allow te be null, we need to make sure
