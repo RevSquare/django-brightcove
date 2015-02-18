@@ -117,4 +117,4 @@ You will also need to add the Brightcove javascript library
 
 .. code-block::  html
 
-    <script language="JavaScript" type="text/javascript"  src="http://admin.brightcove.com/js/BrightcoveExperiences.js">
+    <script type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
