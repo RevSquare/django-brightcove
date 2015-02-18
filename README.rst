@@ -36,7 +36,7 @@ The first step is to add the app in your installed apps list in settings.py
 
     INSTALLED_APPS = (
         ...
-        'django-brightcove'
+        'django_brightcove'
         ...
     )
 
