@@ -2,7 +2,7 @@
 Django Brightcove
 #################
 
-Manages the integration of brightcove videos in a django project. It extends the the Bricove librairy developped by Jonathan Beluch: https://pypi.python.org/pypi/brightcove/0.2
+Manages the integration of brightcove videos in a django project. It extends the the Brightcove library developed by Jonathan Beluch: https://pypi.python.org/pypi/brightcove/0.2
 
 It basically add a form field to easily integrate brightcove account video in the django admin or any form. And adds a template tag to fast integrate a brightcove video in a template.
 
@@ -59,11 +59,11 @@ Finally you will need to add the django-brightcove urls to your Root URLCONF
 
 
 
-******************************
-Add a bricove video to a model
-******************************
+*********************************
+Add a Brightcove video to a model
+*********************************
 
-Simply add the Brightove field manager to it.
+Simply add the Brightcove field manager to it.
 
 .. code-block::  python
 
