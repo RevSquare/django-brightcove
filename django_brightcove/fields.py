@@ -18,16 +18,27 @@ class BrightcoveField(models.ForeignKey):
     def __init__(self, null=True, blank=True, **kwargs):
         """Overwites default settings to setup the relationship with the BrightcoveItems model"""
         kwargs['verbose_name'] = kwargs.get('verbose_name', _("Brightcove"))
-        kwargs['null'] = kwargs.get('null', True)
-        kwargs['blank'] = kwargs.get('blank', True)
-        kwargs['on_delete'] = kwargs.get('on_delete', models.SET_NULL)
-        to_field = 'brightcove_id'
+        kwargs['null'] = null
+        kwargs['blank'] = blank
+        # If null is set to True we can't use SET_NULL as default
+        if null:
+            default_on_delete =  models.PROTECT
+        else:
+            default_on_delete = models.SET_NULL
+        kwargs['on_delete'] = kwargs.get('on_delete', default_on_delete)
+        to_field = kwargs.pop('to_field', 'brightcove_id')
         rel_class = models.ManyToOneRel
         db_constraint = True
-        super(BrightcoveField, self).__init__(BrightcoveItems, to_field, rel_class, db_constraint, **kwargs)
+        to = kwargs.pop('to', BrightcoveItems)
+        super(BrightcoveField, self).__init__(to, to_field, rel_class, db_constraint, **kwargs)
 
     def save_form_data(self, instance, data):
-        video = BrightcoveItems.objects.get(pk=data)
+        #when data is u'' and form allow te be null, we need to make sure
+        #it will not blow up the page
+        if data:
+            video = BrightcoveItems.objects.get(pk=data)
+        else:
+            video = None
         super(BrightcoveField, self).save_form_data(instance, video)
 
     def formfield(self, **kwargs):

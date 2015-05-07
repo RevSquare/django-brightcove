@@ -42,6 +42,11 @@ class BrightcoveIntegerField(IntegerField):
     """
     widget = BrightcoveNumberInput
 
+    def __init__(self, max_value=None, min_value=None, *args, **kwargs):
+        kwargs.pop('limit_choices_to', None)
+        super(BrightcoveIntegerField, self).__init__(max_value, min_value,
+            *args, **kwargs)
+
     def clean(self, value):
         value = super(BrightcoveIntegerField, self).clean(value)
         if not self._has_changed(self.initial, value):
