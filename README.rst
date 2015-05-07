@@ -12,17 +12,18 @@ Install
 
 It is strongly recommanded to install this theme from GIT with PIP onto you project virtualenv.
 
-Add this line to your requirements.txt file:
+From PyPi
 
 .. code-block::  shell-session
 
-    -e git+https://github.com/RevSquare/django-brightcove#egg=django-brightcove
+    pip install django-brightcove
 
-And run:
+From Github
 
 .. code-block::  shell-session
 
-    pip install -r requirements.txt
+    https://github.com/RevSquare/django-brightcove#egg=django-brightcove
+
 
 *****
 Setup
@@ -118,3 +119,22 @@ You will also need to add the Brightcove javascript library
 .. code-block::  html
 
     <script type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
+
+
+************
+Contribution
+************
+
+
+Please feel free to contribute. Any help and advices are much appreciated.
+
+
+*****
+LINKS
+*****
+
+Development:
+    https://github.com/RevSquare/django-brightcove
+
+Package:
+    https://pypi.python.org/pypi/django-brightcove
