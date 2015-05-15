@@ -7,7 +7,7 @@ reload(sys).setdefaultencoding('Utf-8')
 
 setup(
     name='django-brightcove',
-    version='0.0.3',
+    version='0.0.4',
     author='Guillaume Pousseo',
     author_email='guillaumepousseo@revsquare.com',
     description='Manages integration of brightcove into django.',
