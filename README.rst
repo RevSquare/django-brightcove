@@ -98,7 +98,7 @@ The first step is to list your brightcove player id and key in your settings fil
         },
     }
 
-Then within your template, simply call for the player tag and pass your video id and eventualy a specific brightcove player type. By default the tag will use the first value in the settings.BRIGHTCOVE_PLAYER dictionary.
+Then within your template, simply call for the player tag and pass your video id and eventualy a specific brightcove player type. By default the tag with the key set as 'default' in settings.BRIGHTCOVE_PLAYER dictionary.
 
 .. code-block::  html
 

@@ -32,7 +32,6 @@ setup(
         'Topic :: Documentation',
     ],
     install_requires=[
-        'Django>=1.4',
         'brightcove>=0.2',
     ],
 )
