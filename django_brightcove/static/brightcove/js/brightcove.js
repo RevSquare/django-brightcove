@@ -1,9 +1,3 @@
-/* Compatibility with Grappelli */
-// grp jQuery namespace
-var grp = grp || {
-    "jQuery": jQuery.noConflict(true)
-};
-
 (function ($) {
     var Brightcove = {
         init: function () {
@@ -17,8 +11,8 @@ var grp = grp || {
             });
         }
     };
-    
+
     $(function () {
         Brightcove.init();
     });
-}(grp.jQuery));
+})(window.jQuery || django.jQuery);
