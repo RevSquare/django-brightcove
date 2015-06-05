@@ -15,7 +15,7 @@ def brightcove_player(context, player_id, *args, **kwargs):
     """
     if not settings.BRIGHTCOVE_PLAYER:
         raise Exception('BRIGHTCOVE_PLAYER constant is missing from your settings.')
-    player = kwargs.get('player', settings.BRIGHTCOVE_PLAYER['default'])
+    player = kwargs.get('player', 'default')
 
     try:
         player = settings.BRIGHTCOVE_PLAYER[player]
