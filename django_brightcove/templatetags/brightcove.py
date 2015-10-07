@@ -20,13 +20,13 @@ def brightcove_player(context, player_id, *args, **kwargs):
     try:
         player = settings.BRIGHTCOVE_PLAYER[player]
     except:
-        raise KeyError('%s player type is missing from the BRIGHTCOVE_PLAYER constant') % player
+        raise KeyError('%s player type is missing from the BRIGHTCOVE_PLAYER constant' % player)
 
     try:
         context['playerID'] = player['PLAYERID']
         context['playerKey'] = player['PLAYERKEY']
     except:
-        raise KeyError('%s player type from the BRIGHTCOVE_PLAYER constant is not properly configured') % player
+        raise KeyError('%s player type from the BRIGHTCOVE_PLAYER constant is not properly configured' % player)
 
     context['width'] = kwargs.get('width', 480)
     context['height'] = kwargs.get('height', 270)
