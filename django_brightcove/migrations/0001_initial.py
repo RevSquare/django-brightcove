@@ -1,50 +1,49 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+"""
+This package is for Django migrations. South migrations can be found in the `south_migrations`
+package.
+"""
+from __future__ import unicode_literals
 
+SOUTH_ERROR_MESSAGE = """\n
+To enable South migrations for this app customize the `SOUTH_MIGRATION_MODULES` setting in your
+settings file such as the following:
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-        # Adding model 'BrightcoveItems'
-        db.create_table(u'django_brightcove_brightcoveitems', (
-            ('brightcove_id', self.gf('django.db.models.fields.BigIntegerField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('video_still_URL', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('thumbnail_URL', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('short_description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('long_description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
-            ('length', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
-            ('link_URL', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('plays_total', self.gf('django.db.models.fields.PositiveIntegerField')(null=True, blank=True)),
-            ('creation_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-            ('published_date', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
-        ))
-        db.send_create_signal(u'django_brightcove', ['BrightcoveItems'])
-
-
-    def backwards(self, orm):
-        # Deleting model 'BrightcoveItems'
-        db.delete_table(u'django_brightcove_brightcoveitems')
-
-
-    models = {
-        u'django_brightcove.brightcoveitems': {
-            'Meta': {'object_name': 'BrightcoveItems'},
-            'brightcove_id': ('django.db.models.fields.BigIntegerField', [], {'primary_key': 'True'}),
-            'creation_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
-            'length': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'link_URL': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'long_description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'plays_total': ('django.db.models.fields.PositiveIntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'published_date': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
-            'short_description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'thumbnail_URL': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'video_still_URL': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'})
-        }
+    SOUTH_MIGRATION_MODULES = {
+        'django_brightcove': 'django_brightcove.south_migrations',
     }
+"""
 
-    complete_apps = ['django_brightcove']
+try:
+    from django.db import models, migrations
+except ImportError:
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured(SOUTH_ERROR_MESSAGE)
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='BrightcoveItems',
+            fields=[
+                ('brightcove_id', models.BigIntegerField(serialize=False, verbose_name='Brightcove id', primary_key=True)),
+                ('name', models.CharField(max_length=255, null=True, verbose_name='Name', blank=True)),
+                ('video_still_URL', models.CharField(max_length=255, null=True, verbose_name='Video still url', blank=True)),
+                ('thumbnail_URL', models.CharField(max_length=255, null=True, verbose_name='Thumbnail url', blank=True)),
+                ('short_description', models.TextField(null=True, verbose_name='Short description', blank=True)),
+                ('long_description', models.TextField(null=True, verbose_name='Short description', blank=True)),
+                ('length', models.IntegerField(null=True, verbose_name='Length', blank=True)),
+                ('link_URL', models.CharField(max_length=255, null=True, verbose_name='Link url', blank=True)),
+                ('plays_total', models.PositiveIntegerField(null=True, verbose_name='Number of plays', blank=True)),
+                ('creation_date', models.DateTimeField(null=True, verbose_name='Creation date', blank=True)),
+                ('published_date', models.DateTimeField(null=True, verbose_name='Published date', blank=True)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+    ]
