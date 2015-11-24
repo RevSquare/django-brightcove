@@ -15,7 +15,7 @@ else:
 
 setup(
     name='django-brightcove',
-    version='0.0.5',
+    version='0.0.6',
     author='Guillaume Pousseo',
     author_email='guillaumepousseo@revsquare.com',
     description='Manages integration of brightcove into django.',

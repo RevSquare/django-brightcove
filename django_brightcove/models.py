@@ -1,9 +1,11 @@
 import datetime
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 
+@python_2_unicode_compatible
 class BrightcoveItems(models.Model):
     """
     This class is storing the brightcove fields and managing the generic relationship
@@ -20,7 +22,7 @@ class BrightcoveItems(models.Model):
     creation_date = models.DateTimeField(verbose_name=_('Creation date'), null=True, blank=True)
     published_date = models.DateTimeField(verbose_name=_('Published date'), null=True, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         if self.name:
             return self.name
         return self.brightcove_id
